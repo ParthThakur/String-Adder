@@ -1,17 +1,27 @@
 def string_adder(str)
-  delimiter = ","
+  sum = 0
+  current = 0
+  negative_number = false
+  negatives = []
 
-  if !str.match(/^\/\//).nil?
-    delimiter = str[2].chr
-    str = str[3..-1]
+  str.each_char do |char|
+    if char >= '0' && char <= '9'
+      current = current * 10 + char.to_i
+    elsif char == '-'
+      negative_number = true
+    else
+      sum += current
+      negatives << -current if negative_number
+      negative_number = false
+      current = 0
+    end
   end
 
-  str = str.gsub("\n", delimiter)
-  numbers = str.split(delimiter).map(&:to_i)
-
-  if numbers.any? { |num| num < 0 }
-    raise "Negative numbers not allowed: #{numbers.select { |num| num < 0 }.join(', ')}"
+  negatives << -current if negative_number
+  if !negatives.empty?
+    puts "Negative numbers not allowed: #{negatives.join(', ')}"
+    raise "Negative numbers not allowed: #{negatives.join(', ')}"
   end
-  
-  numbers.sum
+
+  sum += current
 end
