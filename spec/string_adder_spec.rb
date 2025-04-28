@@ -12,4 +12,8 @@ RSpec.describe "#string_adder" do
   it "Handles single number" do
     expect(string_adder("5")).to eq(5)
   end
+
+  it "Handles new lines (\\n) as delimiters" do
+    expect(string_adder("1\n2,3")).to eq(6)
+  end
 end
