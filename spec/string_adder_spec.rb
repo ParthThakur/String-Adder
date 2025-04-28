@@ -29,5 +29,6 @@ RSpec.describe "#string_adder" do
   it "Throws error for negative numbers" do
     expect { string_adder("1,-2,3") }.to raise_error("Negative numbers not allowed: -2")
     expect { string_adder("//;\n1;-2;3") }.to raise_error("Negative numbers not allowed: -2")
+    expect { string_adder("//;\n1;-2;-3") }.to raise_error("Negative numbers not allowed: -2, -3")
   end
 end
