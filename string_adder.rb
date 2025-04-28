@@ -7,5 +7,11 @@ def string_adder(str)
   end
 
   str = str.gsub("\n", delimiter)
-  str.split(delimiter).map(&:to_i).sum
+  numbers = str.split(delimiter).map(&:to_i)
+
+  if numbers.any? { |num| num < 0 }
+    raise "Negative numbers not allowed: #{numbers.select { |num| num < 0 }.join(', ')}"
+  end
+  
+  numbers.sum
 end
