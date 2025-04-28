@@ -3,6 +3,8 @@ require_relative '../string_adder'
 RSpec.describe "#string_adder" do
   it "Returns sum of numbers speprated by commas" do
     expect(string_adder("1,2,3")).to eq(6)
+    expect(string_adder("10,23,36")).to eq(69)
+    expect(string_adder("10,23,236")).to eq(269)
   end
 
   it "Returns 0 for empty string" do
