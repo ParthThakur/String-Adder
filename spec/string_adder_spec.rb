@@ -25,4 +25,9 @@ RSpec.describe "#string_adder" do
       expect(string_adder("//#{delimiter}\n1#{delimiter}2\n3")).to eq(6)
     end
   end
+
+  it "Throws error for negative numbers" do
+    expect { string_adder("1,-2,3") }.to raise_error("Negative numbers not allowed: -2")
+    expect { string_adder("//;\n1;-2;3") }.to raise_error("Negative numbers not allowed: -2")
+  end
 end
