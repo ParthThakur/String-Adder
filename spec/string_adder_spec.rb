@@ -18,7 +18,7 @@ RSpec.describe "#string_adder" do
   end
 
   it "Handles custom delimiters" do
-    delimiters = %w[~ ! @ # $ % ^ & * ( ) _ + =] # Get a random non-numeric ASCII character
+    delimiters = %w[~ ! @ # $ % ^ & * ( ) _ + =]
 
     delimiters.each do |delimiter|
       expect(string_adder("//#{delimiter}\n1#{delimiter}2#{delimiter}3")).to eq(6)
