@@ -10,8 +10,8 @@ def string_adder(str)
     elsif char == '-'
       negative_number = true
     else
-      sum += current
-      negatives << -current if negative_number
+      sum += current if current <= 1000
+      negatives << -current if negative_number && current <= 1000
       negative_number = false
       current = 0
     end
@@ -23,5 +23,6 @@ def string_adder(str)
     raise "Negative numbers not allowed: #{negatives.join(', ')}"
   end
 
-  sum += current
+  sum += current if current <= 1000
+  sum
 end
