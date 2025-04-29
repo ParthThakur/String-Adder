@@ -38,4 +38,14 @@ RSpec.describe "#string_adder" do
     expect(string_adder("1001,2")).to eq(2)
     expect(string_adder("1000,2")).to eq(1002)
   end
+
+  it "Handles delimiters of any length" do
+    expect(string_adder("//[***]\n1***2***3")).to eq(6)
+    expect(string_adder("//[**][%%]\n1**2%%3")).to eq(6)
+  end
+
+  it "Handles multiple delimiters" do
+    expect(string_adder("//[*][%]\n1*2%3")).to eq(6)
+    expect(string_adder("//[*][%]\n1*2\n3")).to eq(6)
+  end
 end
